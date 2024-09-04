@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'Pretendard';
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 1.5rem;
+  margin: 2rem;
+  border: 0.2rem solid #eee;
+}
+
+input,
+textarea {
+  outline-style: none;
+  padding-left: 0.6rem;
+  resize: none;
+}
