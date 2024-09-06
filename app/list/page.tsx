@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { connectDB } from '../utils/mongo'
 import Button from '../_components/button'
 import ListActions from './ListActions'
+import ModifyActions from './ModifyActions'
 
 const List: React.FC = async () => {
   let db = (await connectDB).db('forum')
@@ -20,6 +21,7 @@ const List: React.FC = async () => {
               <h4 className="text-4xl font-bold">{item.title}</h4>
               <p className="mt-5 text-2xl">{item.content}</p>
             </Link>
+            <ModifyActions id={item._id.toString()} />
           </li>
         ))}
       </ul>
