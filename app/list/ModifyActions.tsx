@@ -16,7 +16,7 @@ const ModifyActions: React.FC<ModifyActionsProps> = ({ id }) => {
 
   return (
     <div>
-      <Button text="수정" onClick={handlerClick} />
+      <Button classes="ml-auto" text="수정" onClick={handlerClick} />
     </div>
   )
 }

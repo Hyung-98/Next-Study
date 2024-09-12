@@ -12,7 +12,7 @@ const ListActions: React.FC = () => {
 
   return (
     <div>
-      <Button text="글작성" onClick={handlerClick} />
+      <Button classes="ml-auto mb-5" text="글작성" onClick={handlerClick} />
     </div>
   )
 }
