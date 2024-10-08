@@ -1,0 +1,75 @@
+.dimmed {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.register_wrap {
+  width: 420px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.3rem;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .register_list {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .register_item {
+      display: flex;
+      align-items: center;
+
+      .register_input {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        label {
+          font-size: 1rem;
+          color: #000;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.5rem 1rem;
+          font-size: 1.2rem;
+          border-bottom: 0.1rem solid #ddd;
+          transition: all 0.5s;
+
+          &:focus {
+            border-color: #000;
+          }
+        }
+      }
+      .register_address_btn {
+        margin-left: 2rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        background: #eee;
+        display: block;
+      }
+    }
+  }
+
+  .btn_reg {
+    margin: 1.5rem 0 0 auto;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background: #eee;
+    display: block;
+  }
+}
