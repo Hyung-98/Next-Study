@@ -25,5 +25,5 @@ export const middleware = (req: NextRequest) => {
 }
 
 export const config = {
-  matcher: ['/api/protected', '/api/secure/*'],
+  matcher: ['/api/protected'],
 }

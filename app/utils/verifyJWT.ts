@@ -22,6 +22,7 @@ export const verifyJWT = (req: NextApiRequest, res: NextApiResponse) => {
       token,
       process.env.JWT_SECRET as string,
     ) as JwtPayload
+    return decoded
   } catch (error) {
     res.status(401).json({ message: '유효하지 않은 토큰입니다.' })
     throw new Error('유효하지 않은 토큰입니다.')
