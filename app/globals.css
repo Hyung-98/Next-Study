@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'react-datepicker/dist/react-datepicker.css';
+
+html {
+  font-family: 'Pretendard';
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+input,
+textarea {
+  outline-style: none;
+  padding-left: 0.6rem;
+  resize: none;
+}
+
+.bg-gray {
+  background-color: rgb(227, 226, 224);
+}
+.bg-blue {
+  background-color: rgb(211, 229, 239);
+}
+.bg-yellow {
+  background-color: rgb(253, 236, 200);
+}
+.bg-orange {
+  background-color: rgb(250, 222, 201);
+}
+.bg-default {
+  background-color: rgba(227, 226, 224, 0.5);
+}
+.bg-purple {
+  background-color: rgb(232, 222, 238);
+}
+.bg-pink {
+  background-color: rgb(245, 224, 233);
+}

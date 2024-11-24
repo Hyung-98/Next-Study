@@ -1,0 +1,4 @@
+# pnpm-workspace.yaml
+packages:
+  - 'apps/*' # For apps like Next.js frontend and backend
+  - 'packages/*' # For shared libraries
