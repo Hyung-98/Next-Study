@@ -1,9 +1,5 @@
 import Link from 'next/link';
 
-import 'react-notion-x/src/styles.css';
-import 'prismjs/themes/prism-tomorrow.css';
-import 'katex/dist/katex.min.css';
-
 interface BlogPost {
   id: string;
   title: string;
