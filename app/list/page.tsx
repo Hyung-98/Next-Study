@@ -1,6 +1,6 @@
 import BlogList from '../_components/BlogList';
 
-const List = async () => {
+const List = () => {
   return (
     <div>
       <BlogList />

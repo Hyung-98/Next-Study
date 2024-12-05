@@ -20,7 +20,7 @@ const BlogList = () => {
             <p className="mt-2 text-lg">{new Date(post.date).toLocaleDateString()}</p>
             <ul className="flex flex-wrap gap-2 mt-2">
               {post.tags.map((tag: any) => (
-                <li key={tag.id} className={`px-2 py1 text-sm ${'bg-' + tag.color}`}>
+                <li key={tag.id} className={`px-2 py1 text-sm bg-${tag.color}`}>
                   {tag.name}
                 </li>
               ))}

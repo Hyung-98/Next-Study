@@ -7,22 +7,24 @@ import rehypeHighlight from 'rehype-highlight';
 import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import 'highlight.js/styles/base16/dracula.min.css';
+import 'highlight.js/styles/darcula.css';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import styles from '@/styles/BlogDetails.module.scss';
-import Heading from '@/app/_components/Heading';
+import { CustomHeading, CustomLink, CustomImage } from '@/app/_components/MarkdownComponents';
 
 interface BlogPostProps {
-  params: { slug: string; id: string };
+  params: { slug: string };
 }
 
 const PostPage = async ({ params }: BlogPostProps) => {
   const { slug } = await params;
+  console.log(`Slug: ${slug}`);
 
-  console.log(`Slug: ${params}`);
   const productItem = await getPageBySlug(slug);
+  if (!productItem) return <div>Post not found</div>;
 
   const page = await getPage(productItem.id);
   const property = {
@@ -40,13 +42,13 @@ const PostPage = async ({ params }: BlogPostProps) => {
       <ul className={styles.category_wrap}>
         <li className={styles.category}>
           <em>Create</em>
-          <p className={styles.create}>{new Date(property.create).toLocaleString()}</p>
+          <p>{new Date(property.create).toLocaleString()}</p>
         </li>
         <li className={styles.category}>
           <em>Tag</em>
           <ul>
             {property.tags.map((tag: any) => (
-              <li key={tag.id} className={`px-1 text-sm ${'bg-' + tag.color}`}>
+              <li key={tag.id} className={`px-1 text-sm bg-${tag.color}`}>
                 {tag.name}
               </li>
             ))}
@@ -62,15 +64,28 @@ const PostPage = async ({ params }: BlogPostProps) => {
         </li>
       </ul>
       <ReactMarkdown
+        className={styles.markdown}
         remarkPlugins={[remarkGfm, remarkToc, remarkRehype]}
         rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeSlug, rehypeAutolinkHeadings]}
         components={{
+          h1: (props: any) => <CustomHeading lv={1} {...props} />,
+          h2: (props: any) => <CustomHeading lv={2} {...props} />,
+          h3: (props: any) => <CustomHeading lv={3} {...props} />,
+          a: (props: any) => <CustomLink {...props} />,
+          p: ({ node, ...props }) => {
+            const element: any = node?.children[0];
+            if (element?.tagName === 'img') {
+              return <CustomImage src={element.properties.src} alt={element.properties.alt} />;
+            }
+            return <p {...props} />;
+          },
           code(props) {
             const { children, className, node, ...rest } = props;
             const match = /language-(\w+)/.exec(className || '');
             return match ? (
               <SyntaxHighlighter
                 {...rest}
+                style={atomDark}
                 PreTag="div"
                 children={String(children).replace(/\n$/, '')}
                 language={match[1]}
